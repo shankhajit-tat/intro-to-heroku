@@ -16,7 +16,7 @@ var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/dr
 if (process.env.DATABASE_URL !== undefined) {
   pg.defaults.ssl = true;
 }
-
+console.log('connectionString=>'+connectionString);
 var client = new pg.Client(connectionString);
 client.connect();
 
@@ -26,6 +26,7 @@ var brokerTable = 'broker__c';
 
 // setup the demo data if needed
 client.query('SELECT * FROM salesforce.broker__c', function(error, data) {
+  console.log('error=>'+JSON.stringify(error));
   if (error !== null) {
     client.query('SELECT * FROM broker__c', function(error, data) {
       if (error !== null) {
