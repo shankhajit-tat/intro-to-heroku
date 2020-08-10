@@ -42,7 +42,9 @@ client.query('SELECT * FROM salesforce.broker__c', function(error, data) {
     brokerTable = schema + 'broker__c';
   }
 });
-
+console.log('propertyTable=>'+propertyTable);
+console.log('favoriteTable=>'+favoriteTable);
+console.log('brokerTable=>'+brokerTable);
 
 app.get('/property', function(req, res) {
   client.query('SELECT * FROM ' + propertyTable, function(error, data) {
